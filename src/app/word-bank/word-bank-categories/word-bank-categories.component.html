@@ -2,19 +2,19 @@
   <app-header title="Bank słówek - Lista kategorii" backLink="/"></app-header>
 
   <div class="class flex flex-col gap-2">
-
-    <ng-container *ngIf="categories.length; else noCategories">
-      <div class="card shadow-sm" *ngFor="let category of categories">
-        <div class="card-body">
-          <h2 class="card-title">{{ category.category_name }}</h2>
-          <div class="flex gap-2 justify-end">
-            <button class="btn btn-soft btn-sm">Lista fiszek</button>
-            <button class="btn btn-soft btn-sm btn-error">Usuń</button>
+    <ng-container *ngIf="categories$ | async as categories">
+      <ng-container *ngIf="categories.length; else noCategories">
+        <div class="card shadow-sm" *ngFor="let category of categories">
+          <div class="card-body">
+            <h2 class="card-title">{{ category.category_name }}</h2>
+            <div class="flex gap-2 justify-end">
+              <button class="btn btn-soft btn-sm">Lista fiszek</button>
+              <button class="btn btn-soft btn-sm btn-error">Usuń</button>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </ng-container>
-
     <ng-template #noCategories>
       <div class="flex flex-col gap-4 text-center">
         <h2 class="text-xl font-bold">Nie masz jeszcze żadnych kategorii</h2>
