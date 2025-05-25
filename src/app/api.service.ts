@@ -15,4 +15,7 @@ export class ApiService {
     return this.httpClient.get<Category[]>(`${BASE_URL}/categories`);
   }
 
+  removeCategory(categoryId: number): Observable<any> {
+    return this.httpClient.delete(`${BASE_URL}/categories/${categoryId}`)
+  }
 }
